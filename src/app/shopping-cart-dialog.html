@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Shopping cart</h1>
+
+<swiper #swiper [config]="config" [(index)]="index">
+
+        <div  *ngFor="let poductInfo of cart?.products" style="width: 500px">
+            <app-product-loader [data]="poductInfo"></app-product-loader>
+    </div>
+            
+</swiper>
+
+<p *ngIf="!cart?.products?.length">Your shopping cart is empty!</p>
+<!-- <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div> -->
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

@@ -1,0 +1,35 @@
+<!-- <p>product-loader works!</p> -->
+<mat-card class="example-card">
+    <img mat-card-image [src]="product?.defaultImage" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+        <h4>{{product?.name}}</h4>
+        <p style="min-height: 4em;">
+            {{product?.description}}
+        </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <div class="d-flex">
+
+            <div *ngIf="numberOfOrderd" class="d-flex">
+                <div class="text-center" >
+                    <button (click)="addToCard()" color="primary" mat-mini-fab mat-button>+</button>
+                </div>
+                <div class="text-center m-2">
+                    <p  class="mat-primary text-center mb-0" >{{numberOfOrderd}}</p>
+                </div>
+                <div class="text-center">
+                    <button (click)="removeFromCard()" color="accent" mat-mini-fab mat-button>-</button>
+                </div>
+            </div>
+            <button class="mt-1" *ngIf="!numberOfOrderd" (click)="addToCard()" color="accent" mat-raised-button mat-button>Add to cart!</button>
+            
+            <div class="d-flex position-absolute" style="right: 10px">
+                <del *ngIf="product?.discount !=0" class="mt-1 small float-right">{{product?.price | currency: ' '}}</del>
+                <mat-chip color="primary" selected class="rounded-pill p-2 mt-1 float-right">{{product?.price | discount: product?.discount | currency: ' NOK '}}</mat-chip>
+            </div>
+        </div>
+
+    </mat-card-actions>
+  </mat-card>
+  
